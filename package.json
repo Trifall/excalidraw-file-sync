@@ -5,7 +5,7 @@
 	"private": true,
 	"scripts": {
 		"dev": "bun --watch run ./src/index.ts",
-		"build": "bun clean && bun typecheck && bun build --target=bun ./src/index.ts --outdir=./dist",
+		"build": "bun lint && bun typecheck && bun build --target=bun ./src/index.ts --outdir=./dist",
 		"prepare": "husky",
 		"lint": "oxlint",
 		"format": "prettier --ignore-path .gitignore --log-level warn --write \"./**/*.{js,jsx,ts,tsx,css,md,json,svelte,astro}\" ",
