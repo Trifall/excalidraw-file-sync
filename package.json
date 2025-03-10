@@ -17,14 +17,14 @@
 		"typecheck": "tsc --noEmit"
 	},
 	"devDependencies": {
-		"@types/bun": "latest",
+		"@types/bun": "^1.2.4",
 		"husky": "^9.1.7",
 		"lint-staged": "^15.4.3",
 		"oxlint": "^0.15.13",
 		"prettier": "^3.5.3"
 	},
 	"peerDependencies": {
-		"typescript": "^5"
+		"typescript": "^5.8.2"
 	},
 	"lint-staged": {
 		"**/*.{js,mjs,cjs,jsx,ts,mts,cts,tsx,vue,astro,svelte}": [

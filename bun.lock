@@ -5,13 +5,13 @@
       "name": "excalidraw-file-sync",
       "devDependencies": {
         "@types/bun": "latest",
-        "husky": "^9.1.7",
-        "lint-staged": "^15.4.3",
-        "oxlint": "^0.15.13",
-        "prettier": "^3.5.3",
+        "husky": "latest",
+        "lint-staged": "latest",
+        "oxlint": "latest",
+        "prettier": "latest",
       },
       "peerDependencies": {
-        "typescript": "^5",
+        "typescript": "latest",
       },
     },
   },
