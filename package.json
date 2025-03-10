@@ -1,5 +1,10 @@
 {
 	"name": "excalidraw-file-sync",
+	"author": {
+		"name": "Jerren Trifan",
+		"email": "jerren@trifall.com",
+		"url": "https://trifall.com"
+	},
 	"module": "src/index.ts",
 	"type": "module",
 	"private": true,
