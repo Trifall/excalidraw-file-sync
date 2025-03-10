@@ -1,5 +1,5 @@
 import fs from 'fs';
-import { watch } from 'node:fs/promises';
+import { watch } from 'fs/promises';
 import { parseFileName, processFileGroup } from './fileProcessor';
 import { logger } from './logger';
 import { type Config } from './types';
