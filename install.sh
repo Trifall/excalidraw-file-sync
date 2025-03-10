@@ -122,6 +122,38 @@ validate_path() {
   fi
 }
 
+# Add this function after the existing validate_path function
+validate_folder_conflicts() {
+  local downloads="$1"
+  local sync="$2"
+  local backups="$3"
+
+  # Resolve to absolute paths
+  downloads=$(realpath -m "$downloads")
+  sync=$(realpath -m "$sync")
+  backups=$(realpath -m "$backups")
+
+  if [ "$downloads" = "$sync" ]; then
+    echo "Error: Downloads folder cannot be the same as sync folder"
+    exit 1
+  fi
+
+  if [ "$downloads" = "$backups" ]; then
+    echo "Error: Downloads folder cannot be the same as backups folder"
+    exit 1
+  fi
+
+  if [[ "$sync" == "$downloads"* ]]; then
+    echo "Error: Sync folder cannot be inside downloads folder"
+    exit 1
+  fi
+
+  if [[ "$backups" == "$downloads"* ]]; then
+    echo "Error: Backups folder cannot be inside downloads folder"
+    exit 1
+  fi
+}
+
 # Check if local config.json exists
 if [ -f "$LOCAL_CONFIG_FILE" ]; then
   echo "Found config.json in the script directory. Using this configuration."
@@ -131,6 +163,9 @@ if [ -f "$LOCAL_CONFIG_FILE" ]; then
   DOWNLOADS_FOLDER=$(grep -o '"downloadsFolder"[^,}]*' "$CONFIG_FILE" | cut -d'"' -f4)
   SYNC_FOLDER=$(grep -o '"syncFolder"[^,}]*' "$CONFIG_FILE" | cut -d'"' -f4)
   BACKUPS_FOLDER=$(grep -o '"backupsFolder"[^,}]*' "$CONFIG_FILE" | cut -d'"' -f4)
+
+  # Add this line to validate folder conflicts
+  validate_folder_conflicts "$DOWNLOADS_FOLDER" "$SYNC_FOLDER" "$BACKUPS_FOLDER"
 
   # Validate paths from config file
   validate_path "$DOWNLOADS_FOLDER"
@@ -149,6 +184,9 @@ else
 
   read -p "Backups folder path [${HOME_DIR}/ExcalidrawSync/backups]: " BACKUPS_FOLDER
   BACKUPS_FOLDER=${BACKUPS_FOLDER:-"${HOME_DIR}/ExcalidrawSync/backups"}
+
+  # Add validation before creating folders
+  validate_folder_conflicts "$DOWNLOADS_FOLDER" "$SYNC_FOLDER" "$BACKUPS_FOLDER"
 
   # Validate the provided paths
   validate_path "$DOWNLOADS_FOLDER"

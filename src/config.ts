@@ -111,6 +111,33 @@ export const validateFolders = (config: Config): void => {
 	}
 };
 
+const validateFolderPaths = (config: Config): void => {
+	const resolvedPaths = {
+		downloads: path.resolve(config.downloadsFolder),
+		sync: path.resolve(config.syncFolder),
+		backups: path.resolve(config.backupsFolder),
+	};
+
+	// Check for path conflicts
+	if (resolvedPaths.downloads === resolvedPaths.sync) {
+		throw new Error('Downloads folder cannot be the same as sync folder');
+	}
+
+	if (resolvedPaths.downloads === resolvedPaths.backups) {
+		throw new Error('Downloads folder cannot be the same as backups folder');
+	}
+
+	// Also check if backups folder is a subfolder of downloads to prevent loops
+	if (resolvedPaths.backups.startsWith(resolvedPaths.downloads)) {
+		throw new Error('Backups folder cannot be inside downloads folder');
+	}
+
+	// Check if sync folder is a subfolder of downloads
+	if (resolvedPaths.sync.startsWith(resolvedPaths.downloads)) {
+		throw new Error('Sync folder cannot be inside downloads folder');
+	}
+};
+
 // Load and validate configuration
 export const loadConfig = (): Config => {
 	const cliArgs = parseCliArgs();
@@ -118,6 +145,7 @@ export const loadConfig = (): Config => {
 	// If all directory paths are provided via CLI, skip loading config file
 	if (cliArgs.downloadsFolder && cliArgs.syncFolder && cliArgs.backupsFolder) {
 		const config = mergeConfig(cliArgs, {});
+		validateFolderPaths(config);
 		validateFolders(config);
 		return config;
 	}
@@ -127,6 +155,7 @@ export const loadConfig = (): Config => {
 	const fileConfig = fs.existsSync(configPath) ? loadConfigFromFile(configPath) : {};
 	const config = mergeConfig(cliArgs, fileConfig);
 
+	validateFolderPaths(config);
 	validateFolders(config);
 	return config;
 };
