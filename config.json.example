@@ -1,0 +1,5 @@
+{
+	"downloadsFolder": "path/to/downloads/folder",
+	"syncFolder": "path/to/sync/folder",
+	"backupsFolder": "/path/to/backups/folder"
+}
