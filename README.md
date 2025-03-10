@@ -1,6 +1,6 @@
 # Excalidraw File Sync
 
-An app (installable as a service) that monitors a directory for Excalidraw files, moves them to a designated folder, and manages backups automatically.
+An app (installable as a service) that monitors a directory for Excalidraw files, **moves** them to a designated folder, and manages backups automatically.
 
 ## Why?
 
