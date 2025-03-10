@@ -56,7 +56,7 @@ I made this application so I don't have to worry about that annoyance, and can b
    ```bash
    # Using config file:
    bun dev --configPath config.json
-   
+
    # Or specifying paths directly:
    bun dev --downloadsFolder=/path/to/downloads --syncFolder=/path/to/sync --backupsFolder=/path/to/backups
    ```
@@ -74,6 +74,7 @@ I made this application so I don't have to worry about that annoyance, and can b
    ```
 
    The script will:
+
    - Check if Bun is installed
    - Build the application
    - Install it to `/opt/excalidraw-file-sync/`
@@ -105,7 +106,7 @@ You can configure the file watcher in three ways (in order of precedence):
    ```bash
    # Edit the system configuration
    sudo nano /etc/excalidraw-file-sync/config.json
-   
+
    # After editing, restart the service
    sudo systemctl restart excalidraw-file-sync.service
    ```
@@ -114,9 +115,9 @@ You can configure the file watcher in three ways (in order of precedence):
 
    ```json
    {
-     "downloadsFolder": "/path/to/downloads",
-     "syncFolder": "/path/to/sync",
-     "backupsFolder": "/path/to/backups"
+    "downloadsFolder": "/path/to/downloads",
+    "syncFolder": "/path/to/sync",
+    "backupsFolder": "/path/to/backups"
    }
    ```
 
@@ -140,9 +141,9 @@ For a more streamlined installation, you can:
 
    ```json
    {
-     "downloadsFolder": "/path/to/downloads",
-     "syncFolder": "/path/to/sync",
-     "backupsFolder": "/path/to/backups"
+    "downloadsFolder": "/path/to/downloads",
+    "syncFolder": "/path/to/sync",
+    "backupsFolder": "/path/to/backups"
    }
    ```
 
