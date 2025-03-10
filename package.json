@@ -1,0 +1,30 @@
+{
+	"name": "excalidraw-file-sync",
+	"module": "src/index.ts",
+	"type": "module",
+	"private": true,
+	"scripts": {
+		"dev": "bun --watch run ./src/index.ts",
+		"build": "bun clean && bun typecheck && bun build --target=bun ./src/index.ts --outdir=./dist",
+		"prepare": "husky",
+		"lint": "oxlint",
+		"format": "prettier --ignore-path .gitignore --log-level warn --write \"./**/*.{js,jsx,ts,tsx,css,md,json,svelte,astro}\" ",
+		"typecheck": "tsc --noEmit"
+	},
+	"devDependencies": {
+		"@types/bun": "latest",
+		"husky": "^9.1.7",
+		"lint-staged": "^15.4.3",
+		"oxlint": "^0.15.13",
+		"prettier": "^3.5.3"
+	},
+	"peerDependencies": {
+		"typescript": "^5"
+	},
+	"lint-staged": {
+		"**/*.{js,mjs,cjs,jsx,ts,mts,cts,tsx,vue,astro,svelte}": [
+			"oxlint",
+			"prettier --write --ignore-unknown"
+		]
+	}
+}

@@ -1,0 +1,19 @@
+{
+  "$schema": "./node_modules/oxlint/configuration_schema.json",
+  "plugins": [
+    "typescript"
+  ],
+  "env": {
+    "builtin": true
+  },
+  "categories": {
+    "correctness": "off"
+  },
+  "rules": {
+    "@typescript-eslint/consistent-type-definitions": [
+      "warn",
+      "type"
+    ],
+    "no-unused-vars": "warn"
+  }
+}
