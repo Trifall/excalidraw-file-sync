@@ -23,6 +23,15 @@ I made this application so I don't have to worry about that annoyance, and can b
 - Tracks statistics on files processed, backups created, and errors
 - Rudimentary checks so you don't set the directory folders to the same path. It is bypassable, but it will likely break the application :)
 
+## Technologies Used / Tech Stack
+
+- [Bun](https://bun.sh/) - JavaScript runtime and package manager
+- TypeScript - Language
+- Oxlint - Linter
+- Prettier - Code formatter
+- Husky - Git hooks
+- Systemd - Service management (Linux)
+
 ## Installation
 
 ### Prerequisites
