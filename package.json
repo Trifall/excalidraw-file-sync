@@ -12,7 +12,7 @@
 		"dev": "bun --watch run ./src/index.ts",
 		"build": "bun lint && bun typecheck && bun build --target=bun ./src/index.ts --outdir=./dist",
 		"prepare": "husky",
-		"lint": "oxlint",
+		"lint": "oxlint --fix --fix-suggestions",
 		"format": "prettier --ignore-path .gitignore --log-level warn --write \"./**/*.{js,jsx,ts,tsx,css,md,json,svelte,astro}\" ",
 		"typecheck": "tsc --noEmit"
 	},
@@ -28,7 +28,7 @@
 	},
 	"lint-staged": {
 		"**/*.{js,mjs,cjs,jsx,ts,mts,cts,tsx,vue,astro,svelte}": [
-			"oxlint",
+			"oxlint --fix",
 			"prettier --write --ignore-unknown"
 		]
 	}

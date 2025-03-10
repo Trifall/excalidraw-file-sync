@@ -1,14 +1,11 @@
 {
 	"$schema": "./node_modules/oxlint/configuration_schema.json",
-	"plugins": ["typescript"],
+	"plugins": ["unicorn", "typescript", "oxc", "perf", "import"],
 	"env": {
 		"builtin": true
 	},
 	"categories": {
-		"correctness": "off"
-	},
-	"rules": {
-		"@typescript-eslint/consistent-type-definitions": ["warn", "type"],
-		"no-unused-vars": "warn"
+		"correctness": "warn",
+		"perf": "warn"
 	}
 }
