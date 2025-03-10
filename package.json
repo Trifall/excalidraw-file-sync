@@ -5,12 +5,13 @@
 		"email": "jerren@trifall.com",
 		"url": "https://trifall.com"
 	},
-	"module": "src/index.ts",
+	"module": "src/main.ts",
 	"type": "module",
 	"private": true,
 	"scripts": {
-		"dev": "bun --watch run ./src/index.ts",
-		"build": "bun lint && bun typecheck && bun build --target=bun ./src/index.ts --outdir=./dist",
+		"dev": "bun --watch run ./src/main.ts",
+		"start": "bun src/main.ts",
+		"build": "bun lint && bun typecheck && bun build --target=bun ./src/main.ts --outdir=./dist",
 		"prepare": "husky",
 		"lint": "oxlint --fix --fix-suggestions",
 		"format": "prettier --ignore-path .gitignore --log-level warn --write \"./**/*.{js,jsx,ts,tsx,css,md,json,svelte,astro}\" ",
