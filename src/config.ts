@@ -52,7 +52,6 @@ export const loadConfigFromFile = (configPath: string): Partial<Config> => {
 
 // Merge configurations with precedence: CLI > Config File > Default
 export const mergeConfig = (cliConfig: Partial<Config>, fileConfig: Partial<Config>): Config => {
-	// Use os.homedir() for best reliability instead of "~"
 	const homeDir = import.meta.env.HOME || process.env.HOME || os.homedir() || '~';
 
 	if (!homeDir) {
@@ -75,9 +74,9 @@ export const mergeConfig = (cliConfig: Partial<Config>, fileConfig: Partial<Conf
 	);
 
 	logger.info(`Using Folder Configuration:`);
-	logger.info(`Watching Folder: ${downloadsFolder}`);
-	logger.info(`Sync Folder: ${syncFolder}`);
-	logger.info(`Backups Folder: ${backupsFolder}`);
+	logger.info(` - Watching Folder: ${downloadsFolder}`);
+	logger.info(` - Sync Folder: ${syncFolder}`);
+	logger.info(` - Backups Folder: ${backupsFolder}`);
 
 	return {
 		downloadsFolder,
