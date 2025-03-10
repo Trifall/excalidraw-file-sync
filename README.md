@@ -8,7 +8,7 @@ Excalidraw saving is much simpler on chromium browsers due to the file-system AP
 
 On chromium browsers, the browser simply overwrites the file, so all you really have to do is save the original file into the target folder, and every subsequent save will target and overwrite the original file.
 
-Firefox (and it's derivatives), however, create a new file with a version suffix instead of overwriting the save file of the previous one (i.e `save.excalidraw, save(1).excalidraw, save(2).excalidraw`).
+Firefox (and its derivatives), however, create a new file with a version suffix instead of overwriting the save file of the previous one (i.e `save.excalidraw, save(1).excalidraw, save(2).excalidraw`).
 
 I made this application so I don't have to worry about that annoyance, and can backup my Excalidraw drawings with backup versions from my self-hosted instance to my Syncthing shared folder by simply pressing CTRL+S.
 
@@ -41,7 +41,7 @@ I made this application so I don't have to worry about that annoyance, and can b
 
 ### Steps
 
-1. Clone this repository or download the files, install packages:
+1. Clone this repository or download the files, then install packages:
 
    ```bash
    git clone https://github.com/Trifall/excalidraw-file-sync.git
@@ -49,7 +49,13 @@ I made this application so I don't have to worry about that annoyance, and can b
    bun i
    ```
 
-2. (Optional) Configure the application before installation:
+2. For installing for development or a custom build, see
+   [Development](#development). For production and systemd service installation,
+   see [Production](#production).
+
+### Development
+
+1. (Optional) Configure the application before installation:
 
    You can prepare a configuration file by copying and editing the example:
 
@@ -60,7 +66,7 @@ I made this application so I don't have to worry about that annoyance, and can b
 
    The installer will detect and use this file automatically.
 
-3. For running quickly in development:
+2. For running quickly in development:
 
    ```bash
    # Using config file:
@@ -70,13 +76,42 @@ I made this application so I don't have to worry about that annoyance, and can b
    bun dev --downloadsFolder=/path/to/downloads --syncFolder=/path/to/sync --backupsFolder=/path/to/backups
    ```
 
-4. Make the installation script executable:
+### Production
+
+> **Install via Script (systemd service)**
+
+#### Pre-installation Configuration
+
+For a more streamlined installation, you can:
+
+1. Create a `config.json` file in the project root before running the installer:
+
+   ```bash
+   cp config.json.example config.json
+   nano config.json
+   ```
+
+2. Edit the paths according to your needs:
+
+   ```json
+   {
+    "downloadsFolder": "/path/to/downloads",
+    "syncFolder": "/path/to/sync",
+    "backupsFolder": "/path/to/backups"
+   }
+   ```
+
+3. The installer will automatically detect and use this file, skipping the manual configuration prompts.
+
+#### Run the Installation Script
+
+1. Make the installation script executable:
 
    ```bash
    chmod +x install.sh
    ```
 
-5. Run the installation script:
+2. Run the installation script:
 
    ```bash
    sudo ./install.sh
@@ -98,7 +133,7 @@ I made this application so I don't have to worry about that annoyance, and can b
 
 You can configure the file watcher in three ways (in order of precedence):
 
-1. Command-line arguments (useful for manual runs and forced overrides):
+1. Command-line arguments (manually running, forced overrides):
 
    ```bash
    bun /opt/excalidraw-file-sync/dist/main.js --downloadsFolder=/path/to/downloads --syncFolder=/path/to/sync --backupsFolder=/path/to/backups
@@ -110,7 +145,7 @@ You can configure the file watcher in three ways (in order of precedence):
    bun /opt/excalidraw-file-sync/dist/main.js --configPath=/path/to/config.json
    ```
 
-2. System configuration file (created during installation, most common):
+2. System configuration file (recommended, created during installation):
 
    ```bash
    # Edit the system configuration
@@ -134,29 +169,6 @@ You can configure the file watcher in three ways (in order of precedence):
    - Downloads folder: `~/Downloads`
    - Sync folder: `~/ExcalidrawSync`
    - Backups folder: `~/ExcalidrawSync/backups`
-
-### Pre-installation Configuration
-
-For a more streamlined installation, you can:
-
-1. Create a `config.json` file in the project root before running the installer:
-
-   ```bash
-   cp config.json.example config.json
-   nano config.json
-   ```
-
-2. Edit the paths according to your needs:
-
-   ```json
-   {
-    "downloadsFolder": "/path/to/downloads",
-    "syncFolder": "/path/to/sync",
-    "backupsFolder": "/path/to/backups"
-   }
-   ```
-
-3. The installer will automatically detect and use this file, skipping the manual configuration prompts.
 
 ## Usage
 
