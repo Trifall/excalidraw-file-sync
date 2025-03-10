@@ -21,6 +21,7 @@ I made this application so I don't have to worry about that annoyance, and can b
 - Handles edge cases like simultaneous saves and duplicate timestamps
 - Configurable via command-line arguments or config file
 - Tracks statistics on files processed, backups created, and errors
+- Rudimentary checks so you don't set the directory folders to the same path. It is bypassable, but it will likely break the application :)
 
 ## Installation
 
