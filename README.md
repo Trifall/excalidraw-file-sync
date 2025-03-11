@@ -8,9 +8,12 @@ Excalidraw saving is much simpler on chromium browsers due to the file-system AP
 
 On chromium browsers, the browser simply overwrites the file, so all you really have to do is save the original file into the target folder, and every subsequent save will target and overwrite the original file.
 
-Firefox (and its derivatives), however, create a new file with a version suffix instead of overwriting the save file of the previous one (i.e `save.excalidraw, save(1).excalidraw, save(2).excalidraw`).
+Firefox (and its derivatives), however, create a new file with a version suffix instead of overwriting the save file of the previous one (i.e `save.excalidraw, save(1).excalidraw, save(2).excalidraw`). I also didn't want to switch the browser-download-folder save path because it can become quite confusing, and sometimes just forget what the set path was.;
 
 I made this application so I don't have to worry about that annoyance, and can backup my Excalidraw drawings with backup versions from my self-hosted instance to my Syncthing shared folder by simply pressing CTRL+S.
+
+![excalidraw-file-sync-diagram](https://github.com/user-attachments/assets/3c51c8d6-dd96-4630-9db1-16e70dbc1ac5)
+
 
 ## Features
 
